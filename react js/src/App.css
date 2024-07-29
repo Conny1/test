@@ -1,0 +1,16 @@
+
+.homeContainer{
+ min-height: 100vh;
+ width: 100%;
+ background-color: black;
+ display: flex;
+ justify-content: center;
+ align-items:flex-end
+
+
+}
+.linesContainer{
+  width: 70%;
+  height: fit-content;
+  margin-bottom: 100px;
+}
