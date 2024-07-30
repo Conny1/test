@@ -1,0 +1,21 @@
+.lineBlock{
+    opacity: 0;
+    border-bottom:1px solid #fff ;
+    border-top:1px solid #fff ;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.userData{
+
+    width: fit-content;
+   
+    background-color: red;
+
+}
+
+.lineBlock:hover{
+outline: 1px solid red;
+opacity: 1
+}

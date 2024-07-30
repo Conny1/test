@@ -1,0 +1,39 @@
+
+.orbitContainer{
+    /* min-height: 100vh; */
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    /* align-items:flex-end; */
+   
+  
+   
+   }
+   .users{
+     width: 100%;
+     height:400px;
+     margin-bottom: 50px;
+     outline: 1px solid red;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+   }
+   .user{
+    height: fit-content;
+    width: 100px;
+    position: relative;
+   }
+   .profilepic{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}
+.userinfoSection {
+  position: absolute;
+  top:10px;
+  
+    /* transition: opacity 0.3s ease, height 0.3s ease; */
+}
+
+
