@@ -11,8 +11,8 @@
 }
 .linesContainer{
   width: 70%;
-  max-height: 500px;
-  overflow: scroll;
+  height: 500px;
+  /* overflow: scroll; */
   /* margin-bottom: 100px; */
   outline: 1px solid red;
 
