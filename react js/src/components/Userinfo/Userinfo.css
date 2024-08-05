@@ -2,15 +2,17 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* border: 1px solid #ddd; */
+
   border-radius: 8px;
   padding: 10px;
   background: var(--Colors-Black-100, rgba(10, 10, 10, 1));
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 500px;
+
   margin: auto;
   z-index: 999;
+  /* outline: 1px solid red; */
+  height: auto;
 }
 
 .userCard {
@@ -19,6 +21,7 @@
   gap: 15px;
   margin-bottom: -20px;
   max-height: 150px;
+  z-index: 999;
 }
 
 .imageContainer {
@@ -26,8 +29,8 @@
 }
 
 .imageContainer img {
-  /* width: 60px; */
-  /* height: 60px; */
+  width: 100px;
+  height: 100px;
   max-height: 130px;
   max-width: 130px;
   border-radius: 50%;
@@ -41,13 +44,13 @@
 }
 
 .cardInfo .name {
-  font-size: 1.2em;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
 .cardInfo .details {
-  font-size: 0.9em;
+  font-size: 12px;
   color: #666;
   margin: 0;
 }
@@ -61,7 +64,11 @@
 }
 
 .replyContainer {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
   border-radius: 8px;
+  height: fit-content;
   /* padding: 5px; */
   /* border: 1px solid #ddd; */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -77,6 +84,11 @@
       var(--Colors-Black-tansparent-65, rgba(10, 10, 10, 0.65)),
       var(--Colors-Black-tansparent-65, rgba(10, 10, 10, 0.65))
     );
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .replyTitle {
@@ -98,12 +110,12 @@
 }
 
 .replyTitle img {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 }
 
 .replyTitle p {
-  font-size: 1.1em;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
@@ -134,14 +146,14 @@
 }
 
 .messageTitle {
-  font-size: 1.1em;
+  font-size: 15px;
   font-weight: bold;
   margin: 0;
 }
 
 .message {
   font-size: 0.9em;
-  color: #333;
+  color: #c7c1c1;
   margin-top: 5px;
   line-height: 1.6;
 }

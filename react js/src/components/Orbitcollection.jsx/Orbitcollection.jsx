@@ -15,8 +15,8 @@ function OrbitCollection({ users }) {
         // Determine a random length for the inner array (between 1 and remaining elements)
         const remainingElements = inputArray.length - i;
         const randomLength =
-          remainingElements >= 6
-            ? Math.floor(Math.random() * 6) + 1
+          remainingElements >= 5
+            ? Math.floor(Math.random() * 5) + 1
             : Math.floor(Math.random() * remainingElements) + 1;
 
         // Slice the input array to create the inner array
@@ -30,22 +30,27 @@ function OrbitCollection({ users }) {
       setorbits(resultArray);
     }
     createRandomSizedArrays(users?.array);
-    console.log(orbits);
+    // console.log(orbits);
   }, []);
   if (orbits.length === 0) {
     return <>preview is not available</>;
   }
 
   return (
-    <div className="orbitContainer">
+    <div className="orbitContainer ">
       {orbits.map((item, i) => {
         return (
-          <div key={i} className="users">
+          <div key={i} className="users ">
+            <hr />
             {item?.length !== 0
               ? item?.map((user, i) => {
                   // console.log(user);
                   return (
-                    <div key={`${user.id}${i}`} className="user">
+                    <div
+                      key={`${user.id}${i}`}
+                      className="user scale-up-center "
+                      id={`arc${i}`}
+                    >
                       <img
                         className="profilepic"
                         loading="lazy"
@@ -63,27 +68,6 @@ function OrbitCollection({ users }) {
           </div>
         );
       })}
-      {/* <div className="users"> */}
-
-      {/* {users?.array?.length !== 0
-          ? users?.array?.map((user, i) => {
-              return (
-                <div key={`${user.id}${i}`} className="user">
-                  <img
-                    className="profilepic"
-                    loading="lazy"
-                    src={user.img}
-                    alt={user.name}
-                  />
-                  <div className="userinfoSection">
-                    {" "}
-                    <Userinfo user={user} />
-                  </div>
-                </div>
-              );
-            })
-          : "Loading ..."} */}
-      {/* </div> */}
     </div>
   );
 }

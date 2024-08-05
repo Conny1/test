@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Userinfo.css";
 import mail from "../../assets/mail.png";
 import more from "../../assets/more.png";
@@ -9,6 +9,12 @@ import less from "../../assets/less.png";
 const Userinfo = ({ user }) => {
   // console.log(user);
   const [openmore, setopenmore] = useState(false);
+  const [delay, setdelay] = useState(false);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setdelay(true);
+    }, 3000);
+  });
 
   if (user.length === 0) {
     return <>Loading...</>;
@@ -65,39 +71,41 @@ const Userinfo = ({ user }) => {
           </section>
         </div>
       </div>
-      <div className="replyContainer">
-        <div className="replyTitle">
-          <img src={mail} alt="mail" />
-          <p>Reply from Emry Wells</p>
-        </div>
-        <div className="messageContainer">
-          <div className="timeContainer">
-            <p className="time">{formatDate(new Date(user.created_at))}</p>
-            <p>{daysAgo(user.created_at)}</p>
+      {delay && (
+        <div className="replyContainer">
+          <div className="replyTitle">
+            <img src={mail} alt="mail" />
+            <p>Reply from Emry Wells</p>
           </div>
-          <div className="messagedetails">
-            <p className="messageTitle">
-              {user?._orbits_last_message?.message_head}
-            </p>
-            {openmore ? (
-              <p className="message">{user?._orbits_last_message?.message}</p>
-            ) : (
-              <p className="message">
-                {user?._orbits_last_message?.message.substring(1, 50)}...
+          <div className="messageContainer">
+            <div className="timeContainer">
+              <p className="time">{formatDate(new Date(user.created_at))}</p>
+              <p>{daysAgo(user.created_at)}</p>
+            </div>
+            <div className="messagedetails">
+              <p className="messageTitle">
+                {user?._orbits_last_message?.message_head}
               </p>
-            )}
+              {openmore ? (
+                <p className="message">{user?._orbits_last_message?.message}</p>
+              ) : (
+                <p className="message">
+                  {user?._orbits_last_message?.message.substring(0, 50)}...
+                </p>
+              )}
 
-            <button
-              onClick={() => setopenmore((prev) => !prev)}
-              className="more"
-            >
-              {openmore ? <span>Less</span> : <span>More</span>}
+              <button
+                onClick={() => setopenmore((prev) => !prev)}
+                className="more"
+              >
+                {openmore ? <span>Less</span> : <span>More</span>}
 
-              <img src={openmore ? less : more} alt="" />
-            </button>
+                <img src={openmore ? less : more} alt="" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
