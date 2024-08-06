@@ -41,6 +41,7 @@ function App() {
       });
     };
     // Attach the event listener to the window
+
     window.addEventListener("wheel", handleScroll);
     // Clean up the event listener on component unmount
     return () => {
@@ -48,7 +49,7 @@ function App() {
     };
   }, []);
   useEffect(() => {
-    console.log(count);
+    // console.log(count);
     setorbitsList([count]);
   }, [count]);
 

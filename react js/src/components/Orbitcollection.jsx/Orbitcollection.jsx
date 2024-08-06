@@ -3,9 +3,8 @@ import "./OrbitCollection.css";
 import Userinfo from "../Userinfo/Userinfo";
 
 function OrbitCollection({ users }) {
-  // console.log(users.array)
-  // const [users, setusers] = useState(users || [])
   const [orbits, setorbits] = useState([]);
+  const [date, setdate] = useState("");
   useEffect(() => {
     function createRandomSizedArrays(inputArray) {
       const resultArray = [];
@@ -14,11 +13,13 @@ function OrbitCollection({ users }) {
       while (i < inputArray.length) {
         // Determine a random length for the inner array (between 1 and remaining elements)
         const remainingElements = inputArray.length - i;
-        const randomLength =
+        let randomLength =
           remainingElements >= 5
             ? Math.floor(Math.random() * 5) + 1
             : Math.floor(Math.random() * remainingElements) + 1;
-
+        if (i === 0) {
+          randomLength = 2;
+        }
         // Slice the input array to create the inner array
         const innerArray = inputArray.slice(i, i + randomLength);
         resultArray.push(innerArray);
@@ -26,6 +27,7 @@ function OrbitCollection({ users }) {
         // Move the index forward by the length of the inner array
         i += randomLength;
       }
+      setdate(new Date(inputArray[0].created_at).toLocaleDateString());
 
       setorbits(resultArray);
     }
@@ -41,10 +43,10 @@ function OrbitCollection({ users }) {
       {orbits.map((item, i) => {
         return (
           <div key={i} className="users ">
-            <hr />
+            {i === 0 && <p className="date">{date}</p>}
+            <div className="hr"> </div>
             {item?.length !== 0
               ? item?.map((user, i) => {
-                  // console.log(user);
                   return (
                     <div
                       key={`${user.id}${i}`}
